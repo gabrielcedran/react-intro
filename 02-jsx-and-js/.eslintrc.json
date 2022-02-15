@@ -1,0 +1,10 @@
+{
+  "extends": ["eslint:recommended", "prettier"], //eslint:recommended is the "standard" one. Other famous one is airbnb. "prettier" does not add new rules but just deactivate the ones cover by it.
+  "plugins": [],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "env": { "es6": true, "browser": true, "node": true }
+}
