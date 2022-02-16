@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Pet from "./Pet";
 
 const ANIMALS = ["bird", "dog", "cat", "rabbit", "reptile"];
 
@@ -6,7 +7,24 @@ const SearchParams = () => {
   const [location, setLocation] = useState("London, UK");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
+  const [pets, setPets] = useState([]);
   const breeds = [];
+
+  useEffect(() => {
+    requestPets();
+
+    // return () => cleanUp ---- this is not mandatory but this is how you can clean up objects in memory before unmounting
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+
+    const json = await res.json();
+
+    setPets(json.pets);
+  }
 
   return (
     <div className="search-params">
@@ -54,6 +72,14 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
+      {pets.map((pet) => (
+        <Pet
+          name={pet.name}
+          animal={pet.animal}
+          breed={pet.breed}
+          key={pet.id}
+        />
+      ))}
     </div>
   );
 };
