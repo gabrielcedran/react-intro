@@ -2,7 +2,7 @@
   "name": "02-jsx-and-js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
@@ -14,7 +14,12 @@
   "devDependencies": {
     "@babel/core": "^7.17.3",
     "@babel/preset-react": "^7.16.7",
-    "eslint": "^8.9.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "parcel": "^2.3.1",
     "prettier": "^2.5.1"
   },

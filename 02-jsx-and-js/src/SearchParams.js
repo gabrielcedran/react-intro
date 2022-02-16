@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const SearchParams = () => {
   const [location, setLocation] = useState("London, UK");
+
   return (
     <div className="search-params">
       <form>
