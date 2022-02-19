@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ThemeContext from "./ThemeContext";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
 
@@ -10,10 +11,10 @@ const SearchParams = () => {
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
+  const [theme] = useContext(ThemeContext);
 
   useEffect(() => {
     requestPets();
-
     // return () => cleanUp ---- this is not mandatory but this is how you can clean up objects in memory before unmounting
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -76,7 +77,7 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <button>Submit</button>
+        <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
       <Results pets={pets} />
     </div>
