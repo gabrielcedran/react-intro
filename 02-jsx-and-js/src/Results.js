@@ -1,6 +1,16 @@
 import Pet from "./Pet";
+import { useContext, useEffect } from "react";
+import ThemeContext from "./ThemeContext";
 
 const Results = ({ pets }) => {
+  const [theme, setTheme] = useContext(ThemeContext);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setTheme("red"), 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="search">
       {!pets.length ? (
